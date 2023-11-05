@@ -13,13 +13,11 @@ Features:
 ```
 \
 Script Usage:
-\
+```
 • main.py : A terminal script that makes running each script quick and easy.
-\
 • GetAccountInfo.py : A script that outputs the username,account id, and robux balance.
-\
 • BuyGamepass.py : A script to purchase a gamepass.
-\
+```
 To-Do:
 ```
 • Bundle it all into one script with a CLI interface.
