@@ -1,46 +1,42 @@
 import requests
 
-cookie = '_|WARNING:-DO-NOT-SHARE-THIS.--Sharing-this-will-allow-someone-to-log-in-as-you-and-to-steal-your-ROBUX-and-items.|XXXXXXXXXXXXXXX'# Their token here
+def get_roblox_data(cookie):
+    session = requests.Session()
+    session.cookies['.ROBLOSECURITY'] = cookie
 
-session = requests.Session()
-session.cookies['.ROBLOSECURITY'] = cookie
+    req = session.post(
+        url='https://auth.roblox.com/'
+    )
 
-req = session.post(
-    url='https://auth.roblox.com/'
-)
+    if 'X-CSRF-Token' in req.headers:
+        session.headers['X-CSRF-Token'] = req.headers['X-CSRF-Token']
 
-if 'X-CSRF-Token' in req.headers:
-    
-    session.headers['X-CSRF-Token'] = req.headers['X-CSRF-Token']
+    url2 = 'https://users.roblox.com/v1/users/authenticated'
 
-url2 = 'https://users.roblox.com/v1/users/authenticated'
+    headers = {
+        'X-CSRF-TOKEN': session.headers.get('X-CSRF-Token'),
+        'Content-Type': 'application/json; charset=utf-8',
+    }
 
-headers = {
-    'X-CSRF-TOKEN': session.headers.get('X-CSRF-Token'),  # Use the X-CSRF token from the session
-    'Content-Type': 'application/json; charset=utf-8',
-}
+    response = session.get(url2, headers=headers)
 
-response = session.get(url2, headers=headers)
+    user_id = ''
+    if response.status_code == 200:
+        response_json = response.json()
+        for name, key in response_json.items():
+            print(name, ':', key)  # Print the username, Displayname, and ID
+        user_id = response_json.get('id')
+    else:
+        print(f'Response text:', response.text)
+        print(f'GET request failed with status code {response.status_code}')
 
-user_id=''
-if response.status_code == 200:
-    response_json = response.json()
-    for name,key in response_json.items():
-        print(name,':',key)# Print the username, Displayname, and ID
-    user_id = response_json.get('id')
-else:
-    print(f'Response text:', response.text)
-    print(f'GET request failed with status code {response.status_code}')
-    
-url3=f'https://economy.roblox.com/v1/users/{user_id}/currency'   
-response = session.get(url3, headers=headers)
-if response.status_code == 200:
-    response_json = response.json()
-    robux = response_json.get('robux')
-    print('Robux :', robux)
-else:
-    print(f'Response text:', response.text)
-    print(f'GET request failed with status code {response.status_code}')
-
- 
+    url3 = f'https://economy.roblox.com/v1/users/{user_id}/currency'
+    response = session.get(url3, headers=headers)
+    if response.status_code == 200:
+        response_json = response.json()
+        robux = response_json.get('robux')
+        print('Robux :', robux)
+    else:
+        print(f'Response text:', response.text)
+        print(f'GET request failed with status code {response.status_code}')
 
