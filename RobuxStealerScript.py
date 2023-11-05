@@ -1,3 +1,5 @@
+# This script will purchase a chosen gamepass, ith the target's ROBLOSECURITY needed to authenticate the purchase. It bypasses 2FA so all you would need is a ROBLOSECURITY cookie.
+
 import requests
 from bs4 import BeautifulSoup
 
