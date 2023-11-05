@@ -17,3 +17,7 @@ To-Do:
 • Bundle it all into one script with a CLI interface.
 • Ability to update a gamepass to exact amount of robux that a user has.
 ```
+If you want to edit the code, either fork it or give credit using this html tag:
+```
+<a href="https://github.com/0x77ff/Roblox-Robux-Stealer/">Source Code by 0x77FF</a>
+```
