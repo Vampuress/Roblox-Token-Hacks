@@ -17,4 +17,3 @@ To-Do:
 • Bundle it all into one script with a CLI interface.
 • Ability to update a gamepass to exact amount of robux that a user has.
 ```
-<a href="https://www.vecteezy.com/free-photos">Free Stock photos by Vecteezy</a>
