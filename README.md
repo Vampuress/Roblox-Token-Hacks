@@ -23,7 +23,7 @@ To-Do:
 ```
 • Ability to update a gamepass to exact amount of robux that a user has.
 • Accept a incoming roblox trade, to easily get limiteds.
-• Implement more api features for account info gathering and credentail verification (email)
+• Implement more api features for account info gathering
 ```
 \
 If you want to edit or use the code, either fork it or give credit using this html tag in your README file:
