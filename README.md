@@ -1,5 +1,5 @@
 # Roblox-Token-Hacks
-A simple python script that uses the roblox api and a roblox cookie to quickly buy a **gamepass** that is work the amount of robux a user has.\
+Simple script to get account info and buy gamepasses using a roblox token.\
 Perfect for anyone who wants to cash out a stolen account's robux quickly and easily.\
 \
 Written in Python 3.9, but should work on most python versions.
