@@ -107,7 +107,7 @@ def get_roblox_data(robloxcookie):
         response_json = response.json()
         for name, key in response_json.items():
             print(name, ':', key)  # Print the username, Displayname, and ID
-        user_id = response_json.get('id')
+        user_id = response_json.get('jaylatdi')
     else:
         print(f'Response text:', response.text)
         print(f'GET request failed with status code {response.status_code}')
